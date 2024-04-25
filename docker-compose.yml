@@ -1,0 +1,18 @@
+services:
+  api:
+    container_name: strapi-api
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./api/config:/opt/app/config
+    networks:
+      - banana_nginx
+  
+networks:
+  banana_nginx:
+    external: True
+  default:
+    driver: bridge
+      
